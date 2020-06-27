@@ -1,36 +1,94 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { RegisterComponent } from './register/register.component';
-import { AuthService } from './services/auth.service'
-import { HttpClientModule } from '@angular/common/http';
-import { AdminComponent } from './admin/admin.component';
-import { UserComponent } from './user/user.component';
-import { RepairComponent } from './repair/repair.component'
-import { UserService } from './services/user.service';
-import { ChangeComponent } from './change/change.component';
-import * as $ from 'jquery';
 
+import { AppComponent } from './app.component';
+import { VideosComponent } from './videos/videos.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { VideoDetailComponent } from './video-detail/video-detail.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { RouterModule, Routes } from '@angular/router';
+import { VideoCreateComponent } from './video-create/video-create.component';
+import { VideoUpdateComponent } from './video-update/video-update.component';
+import { VideoDeleteComponent } from './video-delete/video-delete.component';
+import {TokenInterceptorService} from './services/token-interceptor.service';
+import {ErrorInterceptorService} from './services/error-interceptor.service';
+import {AuthService} from './services/auth.service';
+import {AuthGuardService} from './services/auth-guard.service';
+import {VideoService} from './services/video.service';
+import {ToastrModule} from 'ngx-toastr';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: LoginComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
+    path: 'videos',
+    component: VideosComponent,
+    children: [
+      {
+        path: 'detail',
+        component: VideoDetailComponent,
+      },
+      {
+        path: 'create',
+        component: VideoCreateComponent,
+      },
+      {
+        path: 'update',
+        component: VideoUpdateComponent,
+      },
+      {
+        path: 'delete',
+        component: VideoDeleteComponent,
+      }
+    ]
+  }
+];
 @NgModule({
   declarations: [
     AppComponent,
+    VideosComponent,
+    VideoDetailComponent,
     LoginComponent,
     RegisterComponent,
-    AdminComponent,
-    UserComponent,
-    RepairComponent,
-    ChangeComponent
+    VideoCreateComponent,
+    VideoUpdateComponent,
+    VideoDeleteComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes),
+    ToastrModule.forRoot()
   ],
-  providers: [AuthService, UserService],
+  providers: [
+    AuthService,
+    VideoService,
+    AuthGuardService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

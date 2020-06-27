@@ -5,11 +5,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using WebApplication1.Controllers;
 using WebApplication1.Controllers.Identity;
 using WebApplication1.Controllers.Users;
+using WebApplication1.Controllers.Videos;
 using WebApplication1.Data;
-using WebApplication1.Models.Users;
+using WebApplication1.Data.Models;
 
 namespace WebApplication1.Infrastructure
 {
@@ -57,7 +57,8 @@ namespace WebApplication1.Infrastructure
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
             => services
                 .AddTransient<IIdentityService, IdentityService>()
-                .AddTransient<IUserService, UserService>();
+                .AddTransient<IUserService, UserService>()
+                .AddTransient<IVideoService, VideoService>();
 
         public static IServiceCollection AddSwagger(this IServiceCollection services)
             => services.AddSwaggerGen(c =>
@@ -66,8 +67,8 @@ namespace WebApplication1.Infrastructure
                     "v1",
                     new Microsoft.OpenApi.Models.OpenApiInfo
                     {
-                        Title = "My WebApi",
-                        Version = "v1"
+                        Title = "My test WebApi",
+                        Version = "v2.0"
                     });
             });
         

@@ -1,10 +1,10 @@
-﻿namespace WebApplication1.Infrastructure
-{
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.DependencyInjection;
-    using WebApplication1.Data;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using WebApplication1.Data;
 
+namespace WebApplication1.Infrastructure
+{
     public static class AppBuilderExtensions
     {
         public static IApplicationBuilder UseSwaggerUI(this IApplicationBuilder app)

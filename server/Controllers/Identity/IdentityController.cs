@@ -1,17 +1,17 @@
-﻿namespace WebApplication1.Controllers
-{
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Options;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using WebApplication1.Controllers.Identity;
-    using WebApplication1.Controllers.Users;
-    using WebApplication1.Models.Identity;
-    using WebApplication1.Models.Users;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using WebApplication1.Controllers.Identity.Models;
+using WebApplication1.Controllers.Users;
+using WebApplication1.Data.Models;
 
+namespace WebApplication1.Controllers.Identity
+{
     public class IdentityController : ApiController
     {
+        public string Token { get => token; }
         public static bool isFirst = false;
         public static IdentityController Controller;
         public static IUserService UserService;
@@ -19,7 +19,7 @@
         private readonly IIdentityService identityService;
         private readonly IUserService userService;
         private readonly AppSettings appSettings;
-        private string Token;
+        private string token;
         public IdentityController(
             UserManager<User> userManager,
             IIdentityService identityService,
@@ -39,7 +39,7 @@
         [Route(nameof(Register))]
         public async Task<ActionResult> Register(RegisterRequestModel model)
         {
-            string role = "user";
+            var role = "user";
             if (isFirst) role = "admin";
             var user = new User
             {
@@ -60,13 +60,11 @@
             if (user == null) return Unauthorized();
             var passwordValid = await userManager.CheckPasswordAsync(user, model.Password);
             if (!passwordValid) return Unauthorized();
-            return new LoginResponseModel
-            {
-                Token = identityService.GenerateJwtToken(
+            token = identityService.GenerateJwtToken(
                     user.Id,
                     user.UserName,
-                    appSettings)
-            };
+                    appSettings);
+            return new LoginResponseModel() { Token = token };
         }
 
         [HttpPost]
@@ -116,9 +114,9 @@
                     .CreateAsync(new User()
                     {
                         Id = id,
-                        UserName = (model.UserName == null) ? newUser.UserName : model.UserName,
+                        UserName = model.UserName ?? newUser.UserName,
                         PasswordHash = newUser.PasswordHash,
-                        Email = (model.Email == null) ? newUser.UserName : model.Email
+                        Email = model.Email ?? newUser.UserName
                     });
                 if (result.Succeeded) return Ok();
                 else return BadRequest(result.Errors);

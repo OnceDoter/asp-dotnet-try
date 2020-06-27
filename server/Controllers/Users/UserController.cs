@@ -1,7 +1,7 @@
-﻿namespace WebApplication1.Controllers.Users
-{
-    using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 
+namespace WebApplication1.Controllers.Users
+{
     [Authorize]
     public class UserController : ApiController
     {

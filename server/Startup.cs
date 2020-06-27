@@ -1,12 +1,12 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using WebApplication1.Infrastructure;
+
 namespace WebApplication1
 {
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Hosting;
-    using WebApplication1.Infrastructure;
-
     public class Startup
     {
 
@@ -47,7 +47,8 @@ namespace WebApplication1
                 .UseCors(x => x
                     .AllowAnyOrigin()
                     .AllowAnyMethod()
-                    .AllowAnyHeader())
+                    .AllowAnyHeader()
+                    .WithOrigins("http://localhost:4200"))
                 .UseAuthentication()
                 .UseAuthorization()
                 .UseEndpoints(x =>

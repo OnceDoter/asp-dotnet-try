@@ -1,12 +1,11 @@
-﻿
+﻿using Microsoft.IdentityModel.Tokens;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+
 namespace WebApplication1.Controllers.Identity
 {
-    using Microsoft.IdentityModel.Tokens;
-    using System;
-    using System.IdentityModel.Tokens.Jwt;
-    using System.Security.Claims;
-    using System.Text;
-
     public class IdentityService : IIdentityService
     {
         public string GenerateJwtToken(string userId, string userName, AppSettings appSettings)
