@@ -11,8 +11,8 @@ namespace WebApplication1.Data.Models
         [MaxLength(MaxDescriptionLength)]
         public string Description { get; set; }
 
-        [Required]
         public string VideoUrl { get; set; }
+        public string VideoLocPath { get; set; }
 
         [Required]
         public string UserId { get; set; }

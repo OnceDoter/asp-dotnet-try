@@ -76,5 +76,17 @@ namespace WebApplication1.Controllers.Videos
 
             return Ok();
         }
+
+        [HttpPut]
+        [Route(nameof(Upload))]
+        public async Task<ActionResult> Upload(UploadVideoRequestModel model)
+        {
+            var uploaded = await videoService.Upload(model);
+            if (!uploaded)
+            {
+                BadRequest();
+            }
+            return Ok();
+        }
     }
 }

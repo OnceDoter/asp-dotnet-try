@@ -10,7 +10,6 @@ namespace WebApplication1
             .Build()
             .Run();
 
-
         public static IHostBuilder CreateHostBuilder(string[] args) 
             => Host
                 .CreateDefaultBuilder(args)

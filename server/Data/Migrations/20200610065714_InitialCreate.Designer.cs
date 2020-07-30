@@ -9,7 +9,7 @@ using WebApplication1.Data;
 
 namespace WebApplication1.Data.Migrations
 {
-    [DbContext(typeof(WebDbContext))]
+    [DbContext(typeof(VideoContext))]
     [Migration("20200610065714_InitialCreate")]
     partial class InitialCreate
     {

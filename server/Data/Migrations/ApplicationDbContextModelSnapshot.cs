@@ -8,7 +8,7 @@ using WebApplication1.Data;
 
 namespace WebApplication1.Data.Migrations
 {
-    [DbContext(typeof(WebDbContext))]
+    [DbContext(typeof(VideoContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -231,8 +231,10 @@ namespace WebApplication1.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("VideoLocPath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("VideoUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

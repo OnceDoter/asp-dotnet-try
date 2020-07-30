@@ -18,7 +18,7 @@ namespace WebApplication1.Infrastructure
         public static void ApplyMigrations(this IApplicationBuilder app)
         {
             using var services = app.ApplicationServices.CreateScope();
-            var dbContext = services.ServiceProvider.GetService<WebDbContext>();
+            var dbContext = services.ServiceProvider.GetService<VideoContext>();
             dbContext.Database.Migrate();
         }
     }

@@ -16,7 +16,7 @@ namespace WebApplication1.Infrastructure
     public static class ServiceCollectionExtensions
     {
         public static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration configuration)
-            => services.AddDbContext<WebDbContext>(options => options
+            => services.AddDbContext<VideoContext>(options => options
                     .UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
         public static IServiceCollection AddIdentity(this IServiceCollection services)
         {
@@ -28,7 +28,7 @@ namespace WebApplication1.Infrastructure
                  x.Password.RequireUppercase = false;
                  x.Password.RequiredLength = 6;
              })
-            .AddEntityFrameworkStores<WebDbContext>();
+            .AddEntityFrameworkStores<VideoContext>();
             return services;
         }
         public static IServiceCollection AddJwtBearerAuth(this IServiceCollection services, AppSettings appSettings)
@@ -58,7 +58,8 @@ namespace WebApplication1.Infrastructure
             => services
                 .AddTransient<IIdentityService, IdentityService>()
                 .AddTransient<IUserService, UserService>()
-                .AddTransient<IVideoService, VideoService>();
+                .AddTransient<IVideoService, VideoService>()
+                .AddTransient<IDbService, DbService>();
 
         public static IServiceCollection AddSwagger(this IServiceCollection services)
             => services.AddSwaggerGen(c =>

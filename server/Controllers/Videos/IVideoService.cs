@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebApplication1.Controllers.Videos.Models;
 
@@ -15,5 +16,6 @@ namespace WebApplication1.Controllers.Videos
         public Task<IEnumerable<VideoListingServiceModel>> ByUser(string userId);
 
         public Task<VideoDetailsServiceModel> Details(int id);
+        public Task<bool> Upload(UploadVideoRequestModel model);
     }
 }

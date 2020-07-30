@@ -5,9 +5,9 @@ import {Video} from '../models/video';
 import { map, mergeMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-details-cat',
-  templateUrl: './details-cat.component.html',
-  styleUrls: ['./details-cat.component.css']
+  selector: 'app-video-detail',
+  templateUrl: './video-detail.component.html',
+  styleUrls: ['./video-detail.component.css']
 })
 export class VideoDetailComponent implements OnInit {
   id: string;

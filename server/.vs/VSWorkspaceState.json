@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\bin",
+    "\\Controllers",
+    "\\Controllers\\Videos",
+    "\\Data",
+    "\\Data\\Migrations",
+    "\\Data\\Models",
+    "\\Infrastructure"
+  ],
+  "SelectedNode": "\\WebApplication1.sln",
+  "PreviewInSolutionExplorer": false
+}

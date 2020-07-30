@@ -5,14 +5,15 @@ using WebApplication1.Data;
 using WebApplication1.Data.Models;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplication1.Controllers.Videos
 {
     public class VideoService : IVideoService
     {
-        private readonly WebDbContext data;
+        private readonly VideoContext data;
 
-        public VideoService(WebDbContext data) => this.data = data;
+        public VideoService(VideoContext data) => this.data = data;
 
         public async Task<int> Create(string videoUrl, string description, string userId)
         {
@@ -85,5 +86,10 @@ namespace WebApplication1.Controllers.Videos
                 .Videos
                 .Where(c => c.Id == id && c.UserId == userId)
                 .FirstOrDefaultAsync();
+
+        public async Task<bool> Upload(UploadVideoRequestModel model)
+        {
+            return true;
+        }
     }
 }
