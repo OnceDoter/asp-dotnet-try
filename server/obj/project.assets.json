@@ -7659,9 +7659,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\paul\\source\\repos\\asp-dotnet-angular\\server\\WebApplication1.csproj",
-      "projectName": "WebApplication1",
-      "projectPath": "C:\\Users\\paul\\source\\repos\\asp-dotnet-angular\\server\\WebApplication1.csproj",
+      "projectUniqueName": "C:\\Users\\paul\\source\\repos\\asp-dotnet-angular\\server\\WebApi.csproj",
+      "projectName": "WebApi",
+      "projectPath": "C:\\Users\\paul\\source\\repos\\asp-dotnet-angular\\server\\WebApi.csproj",
       "packagesPath": "C:\\Users\\paul\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\paul\\source\\repos\\asp-dotnet-angular\\server\\obj\\",
       "projectStyle": "PackageReference",

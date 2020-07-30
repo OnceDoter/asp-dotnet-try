@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace WebApplication1.Data
+﻿namespace WebApplication1.Data
 {
     public interface IDbService
     {

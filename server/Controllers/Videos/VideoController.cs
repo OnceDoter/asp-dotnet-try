@@ -10,54 +10,39 @@ namespace WebApplication1.Controllers.Videos
     [Authorize]
     public class VideoController : ApiController
     {
-        private readonly IVideoService videoService;
-
-        public VideoController(IVideoService catService) => this.videoService = catService;
+        private readonly IVideoService service;
+        public VideoController(IVideoService videoService) 
+            => this.service = videoService;
 
         [HttpGet]
-        [Route(nameof(Mine))]
-        public async Task<IEnumerable<VideoListingServiceModel>> Mine()
-        {
-            var userId = this.User.GetId();
-
-            return await this.videoService.ByUser(userId);
-        }
+        [Route(nameof(VideosByUser))]
+        public async Task<IEnumerable<VideoListingServiceModel>> VideosByUser()
+            => await service.ByUser(User.GetId());
 
         [HttpGet]
         [Route(nameof(Details))]
         public async Task<ActionResult<VideoDetailsServiceModel>> Details(int id)
-            => await this.videoService.Details(id);
+            => await service.Details(id);
 
         [HttpPost]
         [Route(nameof(Create))]
         public async Task<ActionResult> Create(AddVideoRequestModel model)
-        {
-            var userId = this.User.GetId();
-
-            var id = await this.videoService.Create(
-                model.ImageUrl,
-                model.Description,
-                userId);
-
-            return Created(nameof(this.Create), id);
-        }
+            =>  Created(
+                    nameof(Create),
+                    await service.Create(
+                        model.ImageUrl,
+                        model.Description,
+                        User.GetId()));
 
         [HttpPut]
         [Route(nameof(Update))]
         public async Task<ActionResult> Update(UpdateVideoRequestModel model)
         {
-            var userId = this.User.GetId();
-
-            var updated = await this.videoService.Update(
+            var updated = await service.Update(
                 model.Id,
                 model.Description,
-                userId);
-
-            if (!updated)
-            {
-                return BadRequest();
-            }
-
+                User.GetId());
+            if (!updated) return BadRequest();
             return Ok();
         }
 
@@ -65,27 +50,17 @@ namespace WebApplication1.Controllers.Videos
         [Route(nameof(Delete))]
         public async Task<ActionResult> Delete(int id)
         {
-            var userId = this.User.GetId();
-
-            var deleted = await this.videoService.Delete(id, userId);
-
-            if (!deleted)
-            {
-                return BadRequest();
-            }
-
-            return Ok();
+            var deleted = await service.Delete(id, User.GetId());
+            if (!deleted) return BadRequest();
+           return Ok();
         }
 
         [HttpPut]
         [Route(nameof(Upload))]
         public async Task<ActionResult> Upload(UploadVideoRequestModel model)
         {
-            var uploaded = await videoService.Upload(model);
-            if (!uploaded)
-            {
-                BadRequest();
-            }
+            var uploaded = await service.Upload(model);
+            if (!uploaded)BadRequest();
             return Ok();
         }
     }

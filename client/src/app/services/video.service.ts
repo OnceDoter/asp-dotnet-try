@@ -10,17 +10,17 @@ import {AuthService} from './auth.service';
 })
 export class VideoService {
 
-  private url = environment.apiUrl + 'Video/Mine';
+  private url = environment.apiUrl + 'Video';
   constructor(private  http: HttpClient, private authService: AuthService) { }
 
   getVideos(): Observable<Array<Video>>{
-    return this.http.get<Array<Video>>(this.url);
+    return this.http.get<Array<Video>>(this.url + '/VideosByUser');
   }
   saveVideos(data){
     localStorage.setItem('videos', data);
   }
   createVideo(data): Observable<Video>{
-    return this.http.post<Video>(this.url, data);
+    return this.http.post<Video>(this.url + '/Create', data);
   }
   getVideo(id): Observable<Video> {
     return this.http.get<Video>(this.url + '/' + id);

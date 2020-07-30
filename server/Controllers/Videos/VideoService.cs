@@ -5,14 +5,12 @@ using WebApplication1.Data;
 using WebApplication1.Data.Models;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplication1.Controllers.Videos
 {
     public class VideoService : IVideoService
     {
         private readonly VideoContext data;
-
         public VideoService(VideoContext data) => this.data = data;
 
         public async Task<int> Create(string videoUrl, string description, string userId)
@@ -25,9 +23,7 @@ namespace WebApplication1.Controllers.Videos
             };
 
             data.Add(video);
-
             await data.SaveChangesAsync();
-
             return video.Id;
         }
 

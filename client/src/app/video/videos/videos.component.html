@@ -1,0 +1,17 @@
+<img src="https://ichef.bbci.co.uk/news/410/cpsprodpb/ED75/production/_110198706_capture.jpg" class="rounded float-right">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-3" *ngFor="let video of videos">
+      <div class="card" style="width: 18rem;">
+        <img [src]="video.url" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{video.id}}</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a routerLink="/cats/{{video.id}}" class="btn btn-primary">See cat info</a>
+          <button class="btn btn-warning" (click)="editVideo(video.id)"> Edit</button>
+          <button class="btn btn-danger" (click)="deleteVideo(video.id)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'https://localhost:44325/',
+  userNoIconImage: 'C:\\Users\\paul\\source\\repos\\asp-dotnet-angular\\client\\src\\images\\zhivotnye_kot_5999.jpg',
 };
 
 /*

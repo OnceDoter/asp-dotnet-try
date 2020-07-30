@@ -10677,15 +10677,14 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\paul\\source\\repos\\ASP\\asp-dotnet-try\\server\\WebApplication1.csproj",
-      "projectName": "WebApplication1",
-      "projectPath": "C:\\Users\\paul\\source\\repos\\ASP\\asp-dotnet-try\\server\\WebApplication1.csproj",
+      "projectUniqueName": "C:\\Users\\paul\\source\\repos\\asp-dotnet-angular\\server\\WebApi.csproj",
+      "projectName": "WebApi",
+      "projectPath": "C:\\Users\\paul\\source\\repos\\asp-dotnet-angular\\server\\WebApi.csproj",
       "packagesPath": "C:\\Users\\paul\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\paul\\source\\repos\\ASP\\asp-dotnet-try\\server\\obj\\publish\\win-x86\\",
+      "outputPath": "C:\\Users\\paul\\source\\repos\\asp-dotnet-angular\\server\\obj\\publish\\win-x86\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\paul\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 20.1.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10693,7 +10692,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "D:\\VS Components\\DevExpress\\Components\\System\\Components\\Packages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
