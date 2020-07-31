@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.IO.Compression;
-using WebApplication1.Data.Models;
+using AngularWebApi.Data.Models;
 
-namespace WebApplication1.Data
+namespace AngularWebApi.Data
 {
     public class VideoContext : IdentityDbContext<User>
     {

@@ -1,4 +1,4 @@
-﻿namespace WebApplication1.Controllers.Videos.Models
+﻿namespace AngularWebApi.Controllers.Videos.Models
 {
     public class VideoListingServiceModel
     {

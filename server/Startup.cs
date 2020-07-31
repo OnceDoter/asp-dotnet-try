@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using WebApplication1.Infrastructure;
+using AngularWebApi.Infrastructure;
 
-namespace WebApplication1
+namespace AngularWebApi
 {
     public class Startup
     {

@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using WebApplication1.Data;
+using AngularWebApi.Data;
 
-namespace WebApplication1.Infrastructure
+namespace AngularWebApi.Infrastructure
 {
     public static class AppBuilderExtensions
     {

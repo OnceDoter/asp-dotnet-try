@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using WebApplication1.Controllers.Videos.Models;
+using AngularWebApi.Controllers.Videos.Models;
 
-namespace WebApplication1.Controllers.Videos
+namespace AngularWebApi.Controllers.Videos
 {
     public interface IVideoService
     {

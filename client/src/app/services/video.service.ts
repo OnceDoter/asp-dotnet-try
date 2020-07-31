@@ -19,7 +19,7 @@ export class VideoService {
   saveVideos(data){
     localStorage.setItem('videos', data);
   }
-  createVideo(data): Observable<Video>{
+  curlVideo(data): Observable<Video>{
     return this.http.post<Video>(this.url + '/Create', data);
   }
   getVideo(id): Observable<Video> {

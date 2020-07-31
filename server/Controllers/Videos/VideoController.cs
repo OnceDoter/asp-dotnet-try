@@ -2,10 +2,10 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using WebApplication1.Controllers.Videos.Models;
-using WebApplication1.Infrastructure;
+using AngularWebApi.Controllers.Videos.Models;
+using AngularWebApi.Infrastructure;
 
-namespace WebApplication1.Controllers.Videos
+namespace AngularWebApi.Controllers.Videos
 {
     [Authorize]
     public class VideoController : ApiController

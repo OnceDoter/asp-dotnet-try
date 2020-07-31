@@ -5,13 +5,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using WebApplication1.Controllers.Identity;
-using WebApplication1.Controllers.Users;
-using WebApplication1.Controllers.Videos;
-using WebApplication1.Data;
-using WebApplication1.Data.Models;
+using AngularWebApi.Controllers.Identity;
+using AngularWebApi.Controllers.Users;
+using AngularWebApi.Controllers.Videos;
+using AngularWebApi.Data;
+using AngularWebApi.Data.Models;
 
-namespace WebApplication1.Infrastructure
+namespace AngularWebApi.Infrastructure
 {
     public static class ServiceCollectionExtensions
     {

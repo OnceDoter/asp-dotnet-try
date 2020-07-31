@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using static WebApplication1.Data.Validation.Video;
+using static AngularWebApi.Data.Validation.Video;
 
-namespace WebApplication1.Controllers.Videos.Models
+namespace AngularWebApi.Controllers.Videos.Models
 {
     public class VideoDetailsServiceModel : VideoListingServiceModel
     {

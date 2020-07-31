@@ -1,4 +1,4 @@
-﻿namespace WebApplication1.Data
+﻿namespace AngularWebApi.Data
 {
     public interface IDbService
     {

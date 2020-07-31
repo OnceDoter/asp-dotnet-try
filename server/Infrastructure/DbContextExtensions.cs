@@ -1,7 +1,7 @@
-﻿using WebApplication1.Data;
-using WebApplication1.Data.Models;
+﻿using AngularWebApi.Data;
+using AngularWebApi.Data.Models;
 
-namespace WebApplication1.Infrastructure
+namespace AngularWebApi.Infrastructure
 {
     public static class DbContextExtensions
     {

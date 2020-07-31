@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Security.Claims;
 
-namespace WebApplication1.Infrastructure
+namespace AngularWebApi.Infrastructure
 {
     public static class IdentityExtensions
     {

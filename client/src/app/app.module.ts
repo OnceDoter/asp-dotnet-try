@@ -18,20 +18,16 @@ import {AuthService} from './services/auth.service';
 import {AuthGuardService} from './services/auth-guard.service';
 import {VideoService} from './services/video.service';
 import {ToastrModule} from 'ngx-toastr';
+import { NavbarComponent } from './navbar/navbar.component';
+import { UserpartComponent } from './user/userpart/userpart.component';
+import { ContactsComponent } from './contacts/contacts.component';
+import { SucsessComponent } from './user/sucsess/sucsess.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: LoginComponent
-  },
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'register',
-    component: RegisterComponent
-  },
+  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'sucsess', component: SucsessComponent },
   {
     path: 'videos',
     component: VideosComponent,
@@ -64,7 +60,11 @@ const routes: Routes = [
     RegisterComponent,
     VideoCreateComponent,
     VideoUpdateComponent,
-    VideoDeleteComponent
+    VideoDeleteComponent,
+    NavbarComponent,
+    UserpartComponent,
+    ContactsComponent,
+    SucsessComponent
   ],
   imports: [
     BrowserModule,

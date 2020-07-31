@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WebApplication1.Data.Migrations
+namespace AngularWebApi.Data.Migrations
 {
     public partial class _300720201824_UpdateVideoModel : Migration
     {

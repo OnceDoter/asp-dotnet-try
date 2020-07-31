@@ -1,15 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using WebApplication1.Controllers.Videos.Models;
-using WebApplication1.Data;
-using WebApplication1.Data.Models;
+using AngularWebApi.Controllers.Videos.Models;
+using AngularWebApi.Data;
+using AngularWebApi.Data.Models;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.IO;
 
-namespace WebApplication1.Controllers.Videos
+namespace AngularWebApi.Controllers.Videos
 {
     public class VideoService : IVideoService
     {
+        private const string path = "../videos/";
         private readonly VideoContext data;
         public VideoService(VideoContext data) => this.data = data;
 
@@ -21,7 +24,6 @@ namespace WebApplication1.Controllers.Videos
                 Description = description,
                 UserId = userId
             };
-
             data.Add(video);
             await data.SaveChangesAsync();
             return video.Id;
@@ -29,25 +31,21 @@ namespace WebApplication1.Controllers.Videos
 
         public async Task<bool> Update(int id, string description, string userId)
         {
-            var cat = await GetByIdAndByUserId(id, userId);
-
-            if (cat == null)
+            var video = await GetByIdAndByUserId(id, userId);
+            if (video == null)
             {
                 return false;
             }
-
-            cat.Description = description;
-
+            video.Description = description;
             await data.SaveChangesAsync();
-
             return true;
         }
 
         public async Task<bool> Delete(int id, string userId)
         {
-            var cat = await GetByIdAndByUserId(id, userId); 
-            if (cat == null)return false; 
-            data.Videos.Remove(cat);
+            var video = await GetByIdAndByUserId(id, userId); 
+            if (video == null) return false; 
+            data.Videos.Remove(video);
             await data.SaveChangesAsync();
             return true;
         }
@@ -85,7 +83,23 @@ namespace WebApplication1.Controllers.Videos
 
         public async Task<bool> Upload(UploadVideoRequestModel model)
         {
-            return true;
+            var video = await GetByIdAndByUserId(model.Id, model.UserId);
+            if (video == null) return false;
+            var vlp = Guid.NewGuid().ToString();
+            try
+            {
+                DirectoryInfo dirInfo = new DirectoryInfo(path);
+                if (!dirInfo.Exists)
+                {
+                    dirInfo.Create();
+                }
+                dirInfo.CreateSubdirectory(path + vlp);
+                using Stream stream = new FileStream(path + vlp + "/" + vlp + ".avi", FileMode.OpenOrCreate);
+                stream.Write(model.Content, 0, model.Content.Length);
+                await data.SaveChangesAsync();
+                return true;
+            }
+            catch { return false; }           
         }
     }
 }

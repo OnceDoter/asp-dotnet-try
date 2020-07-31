@@ -1,17 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
+  styleUrls: ['app.component.css'],
   selector: 'app-root',
-  template: `
-  <div>
-    <nav class="nav">
-      <a class="nav-link active" href="#">Main</a>
-      <a class="nav-link" href="#">Register</a>
-      <a class="nav-link" href="#">Login</a>
-      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-    </nav>
-    <router-outlet></router-outlet>
-  </div>`
+  templateUrl: 'app.component.html'
 })
-export class AppComponent {
-}
+export class AppComponent { }

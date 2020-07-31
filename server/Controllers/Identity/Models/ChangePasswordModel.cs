@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebApplication1.Controllers.Identity.Models
+namespace AngularWebApi.Controllers.Identity.Models
 {
     public class ChangePasswordModel
     {

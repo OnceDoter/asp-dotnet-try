@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormBuilder, Validators, AbstractControl} from '@angular/forms';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import {Router} from '@angular/router';
 import {LoginComponent} from '../login/login.component';
@@ -29,8 +29,7 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.authService.register(this.registerForm.value).subscribe(data => {
-      console.log(data);
-      this.router.navigate(['login']).then(this.loginComponent.setdata);
+      this.router.navigate(['sucsess']).then(this.loginComponent.setdata);
     });
   }
 
