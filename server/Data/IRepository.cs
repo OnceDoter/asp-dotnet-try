@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WebApi.Data
 {
-    interface IBaseRepository<T> : IDisposable
+    public interface IRepository<T> : IDisposable
         where T : class
     {
         IEnumerable<T> GetList();

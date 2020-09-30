@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WebApi.Data
 {
-    public class ContentRepository<T> : IBaseRepository<T>
+    public class ContentRepository<T> : IRepository<T>
         where T : class
     {
         // TODO: Multithreading try\catch

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using AngularWebApi.Data;
 using AngularWebApi.Data.Models;
 using System.Linq;
@@ -31,6 +30,5 @@ namespace AngularWebApi.Controllers.Videos
 
         public IEnumerable<Video> ByUser(string userId)
             => repo.GetList().Where(v => v.UserId == userId);
-
     }
 }

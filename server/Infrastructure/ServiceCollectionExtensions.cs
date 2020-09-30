@@ -18,7 +18,7 @@ namespace AngularWebApi.Infrastructure
     public static class ServiceCollectionExtensions
     {
         public static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration configuration)
-            => services.AddDbContext<WebApiDbContext>(options => options
+            => services.AddDbContextPool<WebApiDbContext>(options => options
                     .UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
         public static IServiceCollection AddIdentity(this IServiceCollection services)
         {
