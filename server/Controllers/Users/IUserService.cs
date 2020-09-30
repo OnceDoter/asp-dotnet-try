@@ -10,6 +10,7 @@ namespace AngularWebApi.Controllers.Users
     {
         public Task<IEnumerable<User>> GetUsers();
         public Task<ActionResult<User>> GetUserRole(string username);
+        public Task<ActionResult<bool>> Create(RegisterRequestModel model);
         public Task<ActionResult<bool>> Delete(string id);
         public Task<ActionResult> Update(string id, UpdateUserModel model);
     }

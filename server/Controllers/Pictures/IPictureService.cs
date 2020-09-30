@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApi.Controllers.Videos.Models
+namespace WebApi.Controllers.Pictures
 {
-    public class UpdateVideoRequestModel
+    interface IPictureService
     {
     }
 }

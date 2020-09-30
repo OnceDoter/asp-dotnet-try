@@ -1,32 +1,34 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using AngularWebApi.Controllers.Videos.Models;
 using AngularWebApi.Data;
 using AngularWebApi.Data.Models;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.IO;
+using WebApi.Controllers.Videos.Models;
+using WebApi.Data;
 
 namespace AngularWebApi.Controllers.Videos
 {
     public class VideoService : IVideoService
     {
         private const string path = "../videos/";
-        private readonly VideoContext data;
-        public VideoService(VideoContext data) => this.data = data;
+        private readonly ContentRepository<Video> repo;
+        public VideoService(WebApiDbContext data)
+            => repo = new ContentRepository<Video>(data);
 
-        public async Task<int> Create(string videoUrl, string description, string userId)
+        public async Task Create(CreateVideoRequestModel model)
         {
             var video = new Video()
             {
-                VideoUrl = videoUrl,
-                Description = description,
-                UserId = userId
+                Data = model.Data,
+                Description = model.Description,
+                Duration = model.Duration,
+                Resolution = model.Resolution
             };
-            data.Add(video);
-            await data.SaveChangesAsync();
-            return video.Id;
+            await repo.Create(video);
+            await repo.SaveAsync();
         }
 
         public async Task<bool> Update(int id, string description, string userId)
@@ -56,8 +58,7 @@ namespace AngularWebApi.Controllers.Videos
                 .Where(c => c.UserId == userId)
                 .Select(c => new VideoListingServiceModel
                 {
-                    Id = c.Id,
-                    VideoUrl = c.VideoUrl
+                    Id = c.Id
                 })
                 .ToListAsync();
 
@@ -69,7 +70,6 @@ namespace AngularWebApi.Controllers.Videos
                 {
                     Id = c.Id,
                     UserId = c.UserId,
-                    VideoUrl = c.VideoUrl,
                     Description = c.Description,
                     UserName = c.User.UserName
                 })

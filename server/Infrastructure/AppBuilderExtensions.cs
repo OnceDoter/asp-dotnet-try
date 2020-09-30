@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using AngularWebApi.Data;
+using System;
+using System.Threading.Tasks;
 
 namespace AngularWebApi.Infrastructure
 {
@@ -17,9 +19,11 @@ namespace AngularWebApi.Infrastructure
                     });
         public static void ApplyMigrations(this IApplicationBuilder app)
         {
-            using var services = app.ApplicationServices.CreateScope();
-            var dbContext = services.ServiceProvider.GetService<VideoContext>();
-            dbContext.Database.Migrate();
+            /*using var services = app.ApplicationServices.CreateScope();
+            var dbContext = services.ServiceProvider.GetService<WebApiDbContext>();
+            dbContext.Database.Migrate();*/
         }
+        public static void Then(this Task obj, Action action)
+            => action();
     }
 }

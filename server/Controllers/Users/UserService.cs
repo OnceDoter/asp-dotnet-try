@@ -38,6 +38,11 @@ namespace AngularWebApi.Controllers.Users
         {
             throw new System.NotImplementedException();
         }
+
+        public Task<ActionResult<bool>> Create(RegisterRequestModel model)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
 }

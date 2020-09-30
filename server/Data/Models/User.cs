@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
+using WebApi.Data.Models;
 
 namespace AngularWebApi.Data.Models
 {
     public class User : IdentityUser, ICloneable
     {
         public IEnumerable<Video> Videos { get; } = new HashSet<Video>();
+        public IEnumerable<Audio> Audios { get; } = new HashSet<Audio>();
+        public IEnumerable<Image> Pictures { get; } = new HashSet<Image>();
         public object Clone()
         {
             return new User 

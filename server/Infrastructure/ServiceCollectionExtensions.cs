@@ -10,13 +10,15 @@ using AngularWebApi.Controllers.Users;
 using AngularWebApi.Controllers.Videos;
 using AngularWebApi.Data;
 using AngularWebApi.Data.Models;
+using WebApi.Controllers.Pictures;
+using WebApi.Controllers.Music;
 
 namespace AngularWebApi.Infrastructure
 {
     public static class ServiceCollectionExtensions
     {
         public static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration configuration)
-            => services.AddDbContext<VideoContext>(options => options
+            => services.AddDbContext<WebApiDbContext>(options => options
                     .UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
         public static IServiceCollection AddIdentity(this IServiceCollection services)
         {
@@ -28,7 +30,7 @@ namespace AngularWebApi.Infrastructure
                  x.Password.RequireUppercase = false;
                  x.Password.RequiredLength = 6;
              })
-            .AddEntityFrameworkStores<VideoContext>();
+            .AddEntityFrameworkStores<WebApiDbContext>();
             return services;
         }
         public static IServiceCollection AddJwtBearerAuth(this IServiceCollection services, AppSettings appSettings)
@@ -59,7 +61,8 @@ namespace AngularWebApi.Infrastructure
                 .AddTransient<IIdentityService, IdentityService>()
                 .AddTransient<IUserService, UserService>()
                 .AddTransient<IVideoService, VideoService>()
-                .AddTransient<IDbService, DbService>();
+                .AddTransient<IPictureService, PictureService>()
+                .AddTransient<IMusicService, MusicService>();
 
         public static IServiceCollection AddSwagger(this IServiceCollection services)
             => services.AddSwaggerGen(c =>
@@ -69,7 +72,7 @@ namespace AngularWebApi.Infrastructure
                     new Microsoft.OpenApi.Models.OpenApiInfo
                     {
                         Title = "My test WebApi",
-                        Version = "v2.0"
+                        Version = "v3.1"
                     });
             });
         
