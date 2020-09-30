@@ -1,20 +1,18 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using AngularWebApi.Controllers.Videos.Models;
+using AngularWebApi.Data.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AngularWebApi.Controllers.Videos
 {
     public interface IVideoService
     {
-        public Task<int> Create(string videoUrl, string description, string userId);
+        public ActionResult Create(Video video);
 
-        public Task<bool> Update(int id, string description, string userId);
+        public ActionResult Update(Video video);
 
-        public Task<bool> Delete(int id, string userId);
+        public ActionResult Delete(int id);
+        public IEnumerable<Video> GetVideos();
+        public IEnumerable<Video> ByUser(string userId);
 
-        public Task<IEnumerable<VideoListingServiceModel>> ByUser(string userId);
-
-        public Task<VideoDetailsServiceModel> Details(int id);
-        public Task<bool> Upload(UploadVideoRequestModel model);
     }
 }

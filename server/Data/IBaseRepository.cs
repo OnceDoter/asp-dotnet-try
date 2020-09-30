@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -9,9 +10,9 @@ namespace WebApi.Data
     {
         IEnumerable<T> GetList();
         Task<T> Get(int id);
-        Task Create(T item);
-        Task Update(T item);
-        Task Delete(int id);
+        ActionResult Create(T item);
+        ActionResult Update(T item);
+        ActionResult Delete(int id);
         Task SaveAsync();
     }
 }

@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using AngularWebApi.Controllers.Videos.Models;
 using AngularWebApi.Infrastructure;
+using AngularWebApi.Data.Models;
 
 namespace AngularWebApi.Controllers.Videos
 {
@@ -15,53 +15,28 @@ namespace AngularWebApi.Controllers.Videos
             => this.service = videoService;
 
         [HttpGet]
-        [Route(nameof(VideosByUser))]
-        public async Task<IEnumerable<VideoListingServiceModel>> VideosByUser()
-            => await service.ByUser(User.GetId());
+        [Route(nameof(ByUser))]
+        public IEnumerable<Video> ByUser()
+            => service.ByUser(User.GetId());
 
         [HttpGet]
-        [Route(nameof(Details))]
-        public async Task<ActionResult<VideoDetailsServiceModel>> Details(int id)
-            => await service.Details(id);
+        [Route(nameof(Get))]
+        public IEnumerable<Video> Get()
+            => service.GetVideos();
 
         [HttpPost]
         [Route(nameof(Create))]
-        public async Task<ActionResult> Create(AddVideoRequestModel model)
-            =>  Created(
-                    nameof(Create),
-                    await service.Create(
-                        model.ImageUrl,
-                        model.Description,
-                        User.GetId()));
+        public async Task<ActionResult> Create(Video video)
+            => service.Create(video);
 
         [HttpPut]
         [Route(nameof(Update))]
-        public async Task<ActionResult> Update(UpdateVideoRequestModel model)
-        {
-            var updated = await service.Update(
-                model.Id,
-                model.Description,
-                User.GetId());
-            if (!updated) return BadRequest();
-            return Ok();
-        }
+        public async Task<ActionResult> Update(Video video)
+            => service.Update(video);
 
         [HttpDelete]
         [Route(nameof(Delete))]
         public async Task<ActionResult> Delete(int id)
-        {
-            var deleted = await service.Delete(id, User.GetId());
-            if (!deleted) return BadRequest();
-           return Ok();
-        }
-
-        [HttpPut]
-        [Route(nameof(Upload))]
-        public async Task<ActionResult> Upload(UploadVideoRequestModel model)
-        {
-            var uploaded = await service.Upload(model);
-            if (!uploaded)BadRequest();
-            return Ok();
-        }
+            => service.Delete(id);
     }
 }
