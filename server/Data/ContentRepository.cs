@@ -29,9 +29,6 @@ namespace WebApi.Data
         => tryToChangeEntity(()
             => context.Update(item));
 
-        public void Dispose()
-            => context.Dispose();
-
         public async Task<T> Get(int id)
             => await context.FindAsync<T>(id);
 
@@ -88,6 +85,7 @@ namespace WebApi.Data
             }
             return new BadRequestResult();
         }
-
+        public void Dispose()
+            => context.Dispose();
     }
 }
