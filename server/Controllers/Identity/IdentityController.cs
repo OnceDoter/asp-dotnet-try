@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using AngularWebApi.Controllers.Identity.Models;
+using Microsoft.AspNetCore.Mvc;
 
-namespace AngularWebApi.Controllers.Identity
+namespace WebApi.Controllers.Identity
 {
     public class IdentityController : ApiController
     {      

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using WebApi.Data.Models;
 
-namespace AngularWebApi.Data.Models
+namespace WebApi.Data.Models
 {
     public class Video : IPreserve
     {

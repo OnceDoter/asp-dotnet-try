@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AngularWebApi.Controllers.Identity.Models;
+using Microsoft.AspNetCore.Mvc;
 
-namespace AngularWebApi.Controllers.Identity
+namespace WebApi.Controllers.Identity
 {
     public interface IIdentityService
     {

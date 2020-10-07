@@ -1,7 +1,8 @@
+using AngularWebApi;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace AngularWebApi
+namespace WebApi
 {
     public class Program
     {

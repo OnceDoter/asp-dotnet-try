@@ -1,4 +1,4 @@
-﻿namespace AngularWebApi
+﻿namespace WebApi
 {
     public class AppSettings
     {

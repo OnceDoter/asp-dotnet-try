@@ -1,19 +1,18 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using System;
+﻿using System;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using AngularWebApi.Controllers.Identity.Models;
-using AngularWebApi.Data.Models;
-using System.Net.Mail;
-using System.Net;
-using WebApi.Controllers.Identity;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using WebApi.Data.Models;
 
-namespace AngularWebApi.Controllers.Identity
+namespace WebApi.Controllers.Identity
 {
     public class IdentityService : IIdentityService
     {

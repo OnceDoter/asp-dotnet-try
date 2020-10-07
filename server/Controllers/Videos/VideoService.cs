@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-using AngularWebApi.Data;
-using AngularWebApi.Data.Models;
 using System.Linq;
-using WebApi.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WebApi.Data;
+using WebApi.Data.Models;
 
-namespace AngularWebApi.Controllers.Videos
+namespace WebApi.Controllers.Videos
 {
     [Authorize]
     public class VideoService : IVideoService

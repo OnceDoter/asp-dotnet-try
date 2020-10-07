@@ -1,11 +1,8 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using AngularWebApi.Data;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
 
-namespace AngularWebApi.Infrastructure
+namespace WebApi.Infrastructure
 {
     public static class AppBuilderExtensions
     {

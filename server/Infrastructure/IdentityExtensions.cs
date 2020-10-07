@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Security.Claims;
 
-namespace AngularWebApi.Infrastructure
+namespace WebApi.Infrastructure
 {
     public static class IdentityExtensions
     {
@@ -10,5 +10,6 @@ namespace AngularWebApi.Infrastructure
                 .Claims
                 .FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?
                 .Value;
+
     }
 }

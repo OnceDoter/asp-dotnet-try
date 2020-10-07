@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using AngularWebApi.Data.Models;
 using WebApi.Data.Models;
 
-namespace AngularWebApi.Data
+namespace WebApi.Data
 {
     public class WebApiDbContext : IdentityDbContext<User>
     {

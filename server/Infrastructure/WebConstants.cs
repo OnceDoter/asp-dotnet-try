@@ -1,4 +1,4 @@
-﻿namespace AngularWebApi.Infrastructure
+﻿namespace WebApi.Infrastructure
 {
     public class WebConstants
     {

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
-using WebApi.Data.Models;
 
-namespace AngularWebApi.Data.Models
+namespace WebApi.Data.Models
 {
     public class User : IdentityUser, ICloneable
     {

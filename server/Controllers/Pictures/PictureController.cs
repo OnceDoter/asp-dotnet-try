@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using AngularWebApi.Controllers;
-using AngularWebApi.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Data.Models;
+using WebApi.Infrastructure;
 
 namespace WebApi.Controllers.Pictures
 {

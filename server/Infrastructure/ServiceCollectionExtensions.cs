@@ -1,19 +1,20 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using System.Text;
+using AngularWebApi.Controllers.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using AngularWebApi.Controllers.Identity;
-using AngularWebApi.Controllers.Users;
-using AngularWebApi.Controllers.Videos;
-using AngularWebApi.Data;
-using AngularWebApi.Data.Models;
-using WebApi.Controllers.Pictures;
+using WebApi.Controllers.Identity;
 using WebApi.Controllers.Music;
+using WebApi.Controllers.Pictures;
+using WebApi.Controllers.Users;
+using WebApi.Controllers.Videos;
+using WebApi.Data;
+using WebApi.Data.Models;
 
-namespace AngularWebApi.Infrastructure
+namespace WebApi.Infrastructure
 {
     public static class ServiceCollectionExtensions
     {

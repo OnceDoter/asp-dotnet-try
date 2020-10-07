@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AngularWebApi.Controllers.Identity.Models;
-using AngularWebApi.Data.Models;
+using Microsoft.AspNetCore.Mvc;
+using WebApi.Data.Models;
 
-namespace AngularWebApi.Controllers.Users
+namespace WebApi.Controllers.Users
 {
     public interface IUserService
     {

@@ -1,4 +1,4 @@
-﻿namespace WebApi.Data.Models
+﻿namespace WebApi.Data
 {
     public interface IPreserve
     {
