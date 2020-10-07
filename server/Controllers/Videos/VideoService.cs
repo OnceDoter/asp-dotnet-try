@@ -11,24 +11,24 @@ namespace AngularWebApi.Controllers.Videos
     [Authorize]
     public class VideoService : IVideoService
     {
-        private readonly ContentRepository<Video> repo;
+        private readonly ContentRepository<Video> _repo;
         public VideoService(WebApiDbContext data)
-            => repo = new ContentRepository<Video>(data);
+            => _repo = new ContentRepository<Video>(data);
 
         public ActionResult Create(Video video)
-            => repo.Create(video);
+            => _repo.Create(video);
 
         // TODO: logic on client side
         public ActionResult Update(Video video)
-            => repo.Update(video);
+            => _repo.Update(video);
 
         public ActionResult Delete(int id)
-            => repo.Delete(id);
+            => _repo.Delete(id);
 
         public IEnumerable<Video> GetVideos()
-            => repo.GetList();
+            => _repo.GetList();
 
         public IEnumerable<Video> ByUser(string userId)
-            => repo.GetList().Where(v => v.UserId == userId);
+            => _repo.GetList().Where(v => v.UserId == userId);
     }
 }

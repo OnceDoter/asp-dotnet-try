@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using AngularWebApi.Controllers;
+using AngularWebApi.Controllers.Videos;
+using AngularWebApi.Data.Models;
+using AngularWebApi.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using AngularWebApi.Infrastructure;
-using AngularWebApi.Data.Models;
 
-namespace AngularWebApi.Controllers.Videos
+namespace WebApi.Controllers.Videos
 {
     [Authorize]
     public class VideoController : ApiController

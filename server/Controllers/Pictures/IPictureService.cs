@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 using WebApi.Data.Models;
 
 namespace WebApi.Controllers.Pictures
 {
-    interface IPictureService
+    public interface IPictureService
     {
-        public Task Create(Image image);
+        public ActionResult Create(Image image);
 
-        public Task Update(Image image);
+        public ActionResult Update(Image image);
 
-        public Task Delete(int id);
-
+        public ActionResult Delete(int id);
+        public IEnumerable<Image> GetImages();
         public IEnumerable<Image> ByUser(string userId);
 
     }

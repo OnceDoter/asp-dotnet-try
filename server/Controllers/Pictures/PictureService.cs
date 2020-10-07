@@ -1,31 +1,30 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using AngularWebApi.Data;
+using WebApi.Data;
 using WebApi.Data.Models;
 
 namespace WebApi.Controllers.Pictures
 {
     public class PictureService : IPictureService
     {
+        private readonly ContentRepository<Image> _repo;
+        public PictureService(WebApiDbContext data)
+            => _repo = new ContentRepository<Image>(data);
         public IEnumerable<Image> ByUser(string userId)
-        {
-            throw new NotImplementedException();
-        }
+            => _repo.GetList().Where(i => i.UserId == userId);
 
-        public Task Create(Image image)
-        {
-            throw new NotImplementedException();
-        }
+        public ActionResult Create(Image image)
+            => _repo.Create(image);
 
-        public Task Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public ActionResult Delete(int id)
+            => _repo.Delete(id);
 
-        public Task Update(Image image)
-        {
-            throw new NotImplementedException();
-        }
+        public IEnumerable<Image> GetImages()
+            => _repo.GetList();
+
+        public ActionResult Update(Image image)
+            => _repo.Update(image);
     }
 }
