@@ -11,73 +11,54 @@ namespace WebApi.Data
     public class ContentRepository<T> : IRepository<T>
         where T : class
     {
-        // TODO: Multithreading try\catch
-        private readonly WebApiDbContext context;
+        private readonly WebApiDbContext _context;
 
         public ContentRepository(WebApiDbContext context)
-            => this.context = context;
+            => this._context = context;
 
         public ActionResult Create(T item)
-            => tryToChangeEntity(() 
-                => context.Add(item));
+            => TryToChangeEntity(() 
+                => _context.Add(item));
 
         public ActionResult Delete(int id)
-        => tryToChangeEntity(() 
-            => context.Remove(context.Find<T>(id)));
+            => TryToChangeEntity(() 
+                => _context.Remove(_context.Find<T>(id)));
 
         public ActionResult Update(T item)
-        => tryToChangeEntity(()
-            => context.Update(item));
+            => TryToChangeEntity(()
+                => _context.Update(item));
 
         public async Task<T> Get(int id)
-            => await context.FindAsync<T>(id);
+            => await _context.FindAsync<T>(id);
 
         public IEnumerable<T> GetList()
-        {
-            DbSet<T> set = context.Set<T>();
-            return set.AsEnumerable<T>();
-        }
+            => _context.Set<T>().AsEnumerable();
 
         public async Task SaveAsync()
-        => await context.SaveChangesAsync();
+            => await _context.SaveChangesAsync();
 
-        private ActionResult tryToChangeEntity(Action action)
+        private ActionResult TryToChangeEntity(Action action)
         {
             try
             {
                 action();
-                context.SaveChanges();
+                _context.SaveChanges();
                 return new OkResult();
             }
             catch (DbUpdateConcurrencyException e)
             {
                 foreach (var entry in e.Entries)
-                {
                     if (entry.Entity is T)
                     {
                         var proposedValues = entry.CurrentValues;
                         var databaseValues = entry.GetDatabaseValues();
-
                         foreach (var property in proposedValues.Properties)
-                        {
-                            var proposedValue = proposedValues[property];
-                            var databaseValue = databaseValues[property];
-
-                            // TODO: decide which value should be written to database
-                            // proposedValues[property] = <value to be saved>;
-                        }
-
-                        // Refresh original values to bypass next concurrency check
+                            proposedValues[property] = databaseValues[property];
                         entry.OriginalValues.SetValues(databaseValues);
                         return new OkResult();
                     }
                     else
-                    {
-                        throw new NotSupportedException(
-                            "Don't know how to handle concurrency conflicts for "
-                            + entry.Metadata.Name);
-                    }
-                }
+                        throw new NotSupportedException("Don't know how to handle concurrency conflicts for " + entry.Metadata.Name);
             }
             catch (Exception)
             {
@@ -86,6 +67,6 @@ namespace WebApi.Data
             return new BadRequestResult();
         }
         public void Dispose()
-            => context.Dispose();
+            => _context.Dispose();
     }
 }
