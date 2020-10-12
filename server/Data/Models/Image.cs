@@ -5,6 +5,10 @@ namespace WebApi.Data.Models
 {
     public class Image : IPreserve
     {
+        public Image(string description)
+            => Description = description;
+        
+
         [Key]
         public int Id { get; set; }
         [Required]

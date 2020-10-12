@@ -11,6 +11,7 @@ namespace WebApi.Data
         IEnumerable<T> GetList();
         Task<T> Get(int id);
         ActionResult Create(T item);
+        ActionResult Create(IEnumerable<T> seq);
         ActionResult Update(T item);
         ActionResult Delete(int id);
         Task SaveAsync();

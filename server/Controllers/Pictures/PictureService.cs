@@ -16,6 +16,8 @@ namespace WebApi.Controllers.Pictures
 
         public ActionResult Create(Image image)
             => _repo.Create(image);
+        public ActionResult Create(Image[] images)
+            => _repo.Create(images);
 
         public ActionResult Delete(int id)
             => _repo.Delete(id);

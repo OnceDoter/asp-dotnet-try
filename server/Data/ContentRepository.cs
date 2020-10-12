@@ -19,6 +19,14 @@ namespace WebApi.Data
             => TryToChangeEntity(() 
                 => _context.Add(item));
 
+        public ActionResult Create(IEnumerable<T> seq)
+        {
+            foreach (var elem in seq)
+                TryToChangeEntity(()
+                    => _context.Add(elem));
+            return new OkResult();
+        }
+
         public ActionResult Delete(int id)
             => TryToChangeEntity(() 
                 => _context.Remove(_context.Find<T>(id)));
