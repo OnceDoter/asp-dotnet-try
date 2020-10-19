@@ -13,6 +13,7 @@ namespace WebApi.Data.Models
         public byte[] Data { get; set; }
         public string Description { get; set; }
         public DateTime Duration { get; set; }
+        [NotMapped]
         public (int, int) Resolution { get; set; }
         public string Path { get; set; }
         [Required]

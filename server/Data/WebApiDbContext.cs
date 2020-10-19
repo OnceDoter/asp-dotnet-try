@@ -4,11 +4,11 @@ using WebApi.Data.Models;
 
 namespace WebApi.Data
 {
-    public class WebApiDbContext : IdentityDbContext<User>
+    public sealed class WebApiDbContext : IdentityDbContext<User>
     {
         public WebApiDbContext(DbContextOptions<WebApiDbContext> options) : base(options) 
         {
-            Database.EnsureDeleted();
+            //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
         public DbSet<Video> Videos { get; set; }

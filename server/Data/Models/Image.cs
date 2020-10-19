@@ -15,6 +15,7 @@ namespace WebApi.Data.Models
         [NotMapped]
         public byte[] Data { get; set; }
         public string Description { get; set; }
+        [NotMapped]
         public (int, int) Resolution { get; set; }
         [Required]
         public string UserId { get; set; }
