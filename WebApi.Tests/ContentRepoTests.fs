@@ -38,7 +38,6 @@ let PictureService_change_entities_in_10_threads_return_no_DbUpdateConcurrencyEx
                             [|for i in 0..testEntitiesCount-1 do new Image("test descr #" + i.ToString())|]
                         ) |> ignore
     let images = services.[1].GetImages()
-    let enum = images.GetEnumerator()
     let tasks = Array.zeroCreate threadsCount
     //methods need to check result
     let check (result : ActionResult) : bool =
@@ -52,7 +51,9 @@ let PictureService_change_entities_in_10_threads_return_no_DbUpdateConcurrencyEx
     try
     let act (service : PictureService) = 
         async{
-            for i in 0..testEntitiesCount-1 do service.Update(enum.Current)
+            for image in images do
+                                               image.Description <- "\"modified\" " + image.Description
+                                               service.Update(image)
                                                |> check
                                                |> add
         } |> ignore
@@ -66,6 +67,6 @@ let PictureService_change_entities_in_10_threads_return_no_DbUpdateConcurrencyEx
     //lets check
     let mutable actual = true
     for item in list do
-            if (not item) then actual <- false    
+            if (not item) then actual <- false
             
     Assert.AreEqual(expected, actual)
